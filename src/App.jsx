@@ -313,7 +313,7 @@ function App() {
             </div>
 
             <div
-              className="todo-list flex flex-col h-[520px] overflow-y-scroll"
+              className="todo-list flex flex-col h-[500px] overflow-y-scroll"
               style={{ paddingBottom: "2rem" }} // Add padding bottom here
             >
               {completionLoading && !isCompletedScreen ? (
