@@ -29,7 +29,9 @@ function App() {
   // Function to fetch todos from the server
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/todos");
+      const response = await axios.get(
+        "https://todo-backend-bboe.onrender.com/api/todos"
+      );
       setAllTodos(response.data.filter((todo) => !todo.completedOn));
       setCompletedTodos(response.data.filter((todo) => todo.completedOn));
     } catch (error) {
@@ -46,11 +48,14 @@ function App() {
     }
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3000/api/todos", {
-        title: newTodoTitle,
-        description: newDescription,
-        addedOn: new Date(),
-      });
+      const response = await axios.post(
+        "https://todo-backend-bboe.onrender.com/api/todos",
+        {
+          title: newTodoTitle,
+          description: newDescription,
+          addedOn: new Date(),
+        }
+      );
       setAllTodos([...allTodos, response.data]);
       setNewTodoTitle("");
       setNewDescription("");
@@ -66,7 +71,9 @@ function App() {
   // Function to handle deleting a todo
   const handleToDoDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/todos/${id}`);
+      await axios.delete(
+        `https://todo-backend-bboe.onrender.com/api/todos/${id}`
+      );
       fetchTodos();
       toast.success("Todo deleted successfully!", { theme: "colored" });
     } catch (error) {
@@ -89,7 +96,7 @@ function App() {
       }
 
       const response = await axios.put(
-        `http://localhost:3000/api/todos/${id}`,
+        `https://todo-backend-bboe.onrender.com/api/todos/${id}`,
         {
           ...todo,
           completedOn: isUncomplete ? null : new Date(),
@@ -115,7 +122,9 @@ function App() {
   // Function to handle deleting a completed todo
   const handleCompletedTodoDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/todos/${id}`);
+      await axios.delete(
+        `https://todo-backend-bboe.onrender.com/api/todos/${id}`
+      );
       fetchTodos();
       toast.success("Completed todo deleted successfully!", {
         theme: "colored",
@@ -140,7 +149,7 @@ function App() {
     setLoading(true);
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/todos/${editTodo._id}`,
+        `https://todo-backend-bboe.onrender.com/api/todos/${editTodo._id}`,
         {
           title: newTodoTitle,
           description: newDescription,
